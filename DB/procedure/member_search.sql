@@ -1,0 +1,22 @@
+-- search 프로시저
+CREATE OR REPLACE PROCEDURE USERPROFILE
+(
+P_MEMBER_NO IN MEMBER.MEMBER_NO%TYPE,
+VO_RES OUT SYS_REFCURSOR
+)
+AS
+BEGIN
+	OPEN VO_RES FOR
+	SELECT member_no, email, password, username, name, birthdate, address, gender
+	FROM MEMBER WHERE MEMBER_NO = P_MEMBER_NO;
+END;
+/
+
+-- TEST
+VAR VO_RES REFCURSOR;
+EXEC FIND(1, :VO_RES);
+PRINT VO_RES;
+
+
+
+

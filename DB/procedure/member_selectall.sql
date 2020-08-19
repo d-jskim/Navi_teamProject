@@ -1,0 +1,24 @@
+-- ��ü ��� ���ν���
+CREATE OR REPLACE PROCEDURE SELECTALL(VO_RES OUT SYS_REFCURSOR)
+AS
+BEGIN
+	OPEN VO_RES FOR
+	SELECT MEMBER.member_no, MEMBER.username, MEMBER.name
+	FROM MEMBER, EMPTY_GOODS;
+END;
+/
+
+-- ��ü ��� ���ν��� �׽�Ʈ
+SQL> VAR RES REFCURSOR;
+
+-- 1. EXEC VOALL(VO_RES�� �Է¹��� ������ ����)
+SQL> VAR RES REFCURSOR;
+SQL> EXEC SELECTALL(:RES)
+
+-- 2. PRINT VO_RES ���� ���Ϲ��� ����
+SQL> PRINT RES
+
+
+
+
+
